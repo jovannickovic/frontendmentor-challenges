@@ -1,0 +1,141 @@
+// Colors:
+$primary-colors: (
+    'red': hsl(0, 78%, 62%),
+    'cyan': hsl(180, 62%, 55%),
+    'orange': hsl(34, 97%, 64%),
+    'blue': hsl(212, 86%, 64%)
+);
+$neutral-colors: (
+    'very-dark-blue': hsl(234, 12%, 34%),
+    'grayish-blue': hsl(229, 6%, 66%),
+    'very-light-gray': hsl(0, 0%, 98%)
+);
+
+// Responsive breakpoints:
+$lg: 992px;
+$xl: 1220px;
+@mixin responsive($size) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+
+
+// GENERAL
+body {
+    background-color: map-get($neutral-colors, 'very-light-gray');
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+p {
+    color: map-get($neutral-colors, 'grayish-blue');
+}
+h2 {
+    margin: 0;
+}
+
+// HEADER
+header {
+    text-align: center;
+    padding: 0 10%;
+
+    @include responsive($lg) {
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    h1 {
+        color: map-get($neutral-colors, 'very-dark-blue');
+        font-size: 1.6em;
+        font-weight: 200;
+        margin-top: 10vh;
+
+        @include responsive($lg) {
+            grid-column: 2/3;
+        }
+        @include responsive($xl) {
+            font-size: 2.2em;
+        }
+        span {
+            display: block;
+            font-weight: 600;
+
+            @include responsive($xl) {
+                display: initial;
+            }
+        }
+    }
+    p {
+        margin: 0 0 10vh;
+
+        @include responsive($lg) {
+            font-size: .95em;
+            margin-bottom: 5vh;
+            grid-column: 2/3;
+        }
+    }
+}
+
+// CARD LIST
+.cardList {
+    margin-bottom: 8vh;
+    padding: 0 10%;
+
+    @include responsive($lg) {
+        padding: 0 12.5%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2.5%;
+    }
+    > div {
+        align-self: center;
+    }
+}
+.card {
+        background-color: #FFF;
+        border-top: 5px solid;
+        border-radius: 5px;
+        box-shadow: 0px 8px 15px hsla(212, 86%, 64%, .2);
+        margin-top: 3vh;
+        padding: 8%;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            color: map-get($neutral-colors, 'very-dark-blue');
+            font-size: 1.3em;
+        }
+        p {
+            font-size: .85em;
+        }
+        img {
+            padding: 5vh 0 0;
+            align-self: flex-end;
+        }
+    }
+.red {
+    border-color: map-get($primary-colors, 'red');
+}
+.cyan {
+    border-color: map-get($primary-colors, 'cyan');
+}
+.orange {
+    border-color: map-get($primary-colors, 'orange');
+}
+.blue {
+    border-color: map-get($primary-colors, 'blue');
+}
+
+// FOOTER
+.attribution {
+    font-size: 11px;
+    text-align: center;
+
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}
