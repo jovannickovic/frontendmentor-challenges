@@ -52,7 +52,7 @@ header {
         color: map-get($neutral-colors, 'very-dark-blue');
         font-size: 1.6em;
         font-weight: 200;
-        margin-top: 10vh;
+        margin-top: 9vh;
 
         @include responsive($lg) {
             grid-column: 2/3;
