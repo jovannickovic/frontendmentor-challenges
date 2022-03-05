@@ -1,0 +1,132 @@
+// Colors
+$primary: hsl(215, 51%, 70%);
+$secondary: hsl(178, 100%, 50%);
+$main-bg: hsl(217, 54%, 11%);
+$card-bg: hsl(216, 50%, 16%);
+$line: hsl(215, 32%, 27%);
+$white: hsl(0, 0%, 100%);
+
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+// Responsive breakpoints
+$lg: 992px;
+@mixin responsive($size) {
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+
+
+body {
+    background-color: $main-bg;
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+}
+p {
+    color: $primary;
+}
+a {
+    color: $white;
+    text-decoration: none;
+
+    @include responsive($lg) {
+        transition: .3s linear color;
+
+        &:hover {
+            color: $secondary;
+        }
+    }
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: $card-bg;
+    border-radius: 10px;
+    box-sizing: border-box;
+    max-width: 330px;
+    padding: 1.5em;
+
+    &__img-container {
+        position: relative;
+    }
+    &__img {
+        border-radius: 10px;
+        width: 100%;
+    }
+    &__img-overlay {
+        background-color: rgba(0, 255, 247, .5);
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+
+        @include responsive($lg) {
+            transition: .3s linear opacity;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 1.3em;
+        line-height: 1.5;
+    }
+
+    &__text {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    &__info {
+        color: $primary;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+    }
+    &__price {
+        color: $secondary;
+        font-weight: 600;
+    }
+
+    hr {
+        border: 0;
+        border-bottom: 2px solid $line;
+    }
+
+    &__author {
+        font-weight: 300;
+        margin-bottom: 0;
+    }
+    &__author-avatar {
+        border: 1px solid $white;
+        border-radius: 50%;
+        margin-right: 10px;
+        vertical-align: middle;
+        width: 32px;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    margin-bottom: 5px;
+    text-align: center;
+}
